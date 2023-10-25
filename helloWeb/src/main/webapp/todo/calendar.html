@@ -33,12 +33,12 @@
 		function makeBody(){
 			let num = 1;
 			let tr ='<tbody>';
-			for(let i=1; i<=5; i++){
-				tr += '<tr>';
-				for(let j=1;j<=7;j++){
-					tr += '<td>'+num+'</td>';
-					num++;
-				}tr += '</tr>';
+			for(let i=1; i<=31; i++){
+				if(i % 7 == 0){
+					tr += '<td>'+i+'</td></tr><tr>';
+				}else{
+					tr += '<td>'+i+'</td>'
+				}
 			}
 			tr += '</tbody>';
 			return tr;

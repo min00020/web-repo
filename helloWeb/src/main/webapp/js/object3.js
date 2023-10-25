@@ -33,6 +33,8 @@ const member = {
 	}
 }
 
+//김선용.컴공. 
+
 //객체의 속성 for in
 for(let prop in member){
 	//member.name / member['age']
