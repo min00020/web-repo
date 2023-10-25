@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div id ="show"></div>
+
+	<script>
+		//calendar>table
+		//makeHead();
+		//makeBody();
+		//makeCalendar();
+		makeCalendar();
+		
+		function makeHead(){
+			let th = '';
+			th += '<thead><tr>';
+			th += '<th>일</th>';
+			th += '<th>월</th>';
+			th += '<th>화</th>';
+			th += '<th>수</th>';
+			th += '<th>목</th>';
+			th += '<th>금</th>';
+			th += '<th>토</th>';
+			th += '</tr></thead>';
+			return th;
+		}
+		
+		function makeBody(){
+			let num = 1;
+			let tr ='<tbody>';
+			for(let i=1; i<=5; i++){
+				tr += '<tr>';
+				for(let j=1;j<=7;j++){
+					tr += '<td>'+num+'</td>';
+					num++;
+				}tr += '</tr>';
+			}
+			tr += '</tbody>';
+			return tr;
+		}
+		console.log(makeBody());
+		
+		function makeCalendar(){
+			let table = "";
+			table += '<table border="1">';
+			table += makeHead();
+			table += makeBody();
+			table += '</table>';
+			let show = document.getElementById('show').innerHTML = table;
+			return show;
+		}
+		
+		console.log(makeCalendar());
+				
+		
+	</script>
+</body>
+
+</html>
