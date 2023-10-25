@@ -30,14 +30,14 @@ document.getElementById('saveBtn').onclick = function(e){
 	let age = document.getElementById('age').value;
 	let height = document.getElementById('height').value;
 	
-	const mem = new Member(name, age, height);
-	let str = makeTr(mem); 
-	
 	console.log(name);
-	if(name == 0 || age == 0 || height == 0){
+	if(!name|| !age || !height){
 		alert("값을 입력해주세요.");
 		return;
 	}
+	
+	const mem = new Member(name, age, height);
+	let str = makeTr(mem); 
 	document.getElementById('list').innerHTML += str;
 	
 	//입력 초기화
