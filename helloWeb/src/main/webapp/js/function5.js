@@ -46,11 +46,14 @@ max = numAry.reduce((acc,item) => acc>item ? acc:item);
 
 console.log('최대값:',max);
 
-
 let min = 0;
+min = numAry.reduce((acc,item)=>acc<item ? acc:item);
+console.log('최소값:',min);
+
+min = 0;
 min = numAry.reduce(function(acc,item){
-	if(acc>item){
-		acc=item;
+	if(acc<item){
+		item=acc;
 	}
 	return acc;
 })
