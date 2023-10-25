@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js/function.html</title>
+        <style>
+            #saveBtn{
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+            <!-- table>{thead>tr>th*2}+{tbody>tr>td*2} -->
+
+            <table border ="1">
+                <!-- tr>th+td>input:text -->
+                <tr> 
+                    <th>이름</th>
+                    <td><input type="text" id="name" value="홍길동"></td>
+                </tr>
+                <tr> 
+                    <th>나이</th>
+                    <td><input type="text" id="age" value="20"></td>
+                </tr>
+                <tr> 
+                    <th>키</th>
+                    <td><input type="text" id="height" value="175.7"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <!-- button#saveBtn{저장}  //class로쓰고싶으면 #대신 . -->
+                        <button id="saveBtn">저장</button>
+                    </td>
+                </tr>
+            </table>
+
+        <div id="show"> 
+			<table border = "1">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>나이</th>
+                        <th>키</th>
+                        <th>소개</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <h3>입력회원</h3>
+                <tbody id="list">
+					
+				</tbody>
+            </table>
+        </div>
+        <script src ="function4.js"></script>
+    </body>
+</html>
