@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<dataset>
+	<record>
+		<id>1</id>
+		<first_name>Etta</first_name>
+		<email>etolland0@ucla.edu</email>
+	</record>
+	<record>
+		<id>2</id>
+		<first_name>Jamil</first_name>
+		<email>jcosens1@diigo.com</email>
+	</record>
+	<record>
+		<id>3</id>
+		<first_name>Pepillo</first_name>
+		<email>pmclaine2@pagesperso-orange.fr</email>
+	</record>
+	<record>
+		<id>4</id>
+		<first_name>Georgetta</first_name>
+		<email>ggetcliff3@nydailynews.com</email>
+	</record>
+	<record>
+		<id>5</id>
+		<first_name>Rudy</first_name>
+		<email>rslayford4@whitehouse.gov</email>
+	</record>
+</dataset>

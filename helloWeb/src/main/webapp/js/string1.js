@@ -37,7 +37,7 @@ console.log(obj.toString()); //문자열이 아닌 객체를 반환. 값 자체�
 console.log(obj.key.toString()); //문자열 반환. 객체의 값을 반환하려면 객체의 키로 접근해야
 
 
-console.log('is 1: ', str.indexOf('is',3)); //indexOf()> 찾는 값 없으면 -1반환
+console.log('is 1: ', str.indexOf('is', 3)); //indexOf()> 찾는 값 없으면 -1반환
 console.log('is 2: ', str.search('is'));
 console.log('is 3: ', str.search(/is/i));
 console.log(str.toUpperCase().indexOf('IS'));
@@ -45,6 +45,6 @@ console.log(str.toUpperCase().indexOf('IS'));
 console.log('5번째 문자: ', str.charAt(5)); //문자 하나만 가져오기
 console.log('a 있는지: ', str.includes('a')); //t/f 반환
 
-console.log('바꾸기: ', str.replace('is','IS'));
+console.log('바꾸기: ', str.replace('is', 'IS'));
 
 
