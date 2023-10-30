@@ -49,13 +49,24 @@ xhtp.onload = loadJson;
 //xhtp.onload = loadXML;
 
 function loadJson(){
-	//console.log(xhtp.responseText); // 문자열
+	//console.log(xhtp.responseText); // 문자열 출력 > JSON.parse로 자바스크립트 객체타입으로 변경
+//	let result = JSON.parse(xhtp.responseText);
+//	let dataAry = [];
+	//let titles = ["회원번호", "비밀번호", "이름", "연락처"];
+//	result.forEach(member => {
+//		dataAry.push({mid: member.mid, pass: member.pass, name: member.name, phone: member.phone})
+//	})
+//	result = table.makeTable(titles, dataAry);
+//	document.getElementById('show').innerHTML = result;
+	
+	
 	let dataAry = JSON.parse(xhtp.responseText); //(xhtp.responseText: json문자열)>오브젝트로 변경
-	//console.log(dataAry); // 자바 객체로 변경
 	let titles = ["회원번호", "비밀번호", "이름", "연락처"];
 	let result = table.makeTable(titles, dataAry);
 	document.getElementById('show').innerHTML = result;
-	table.makeTr(newMember2);
+	
+//	table.makeTr(newMember2);
+	
 }
 
 function loadXML() {
@@ -80,13 +91,13 @@ function loadXML() {
 	document.getElementById('show').innerHTML = result;
 
 	//newMember추가. ajax 실행이 되고 나서 추가하는 기능 실행
-	table.makeTr(newMember2); //함수로 추가해봄
-	
+	//document.getElementById('list').innerHTML += table.makeTr(newMember2); //함수로 추가해봄
+
 	let tr = '<tr><td>' + newMember.mid +
 		'</td><td>' + newMember.pass +
 		'</td><td>' + newMember.name +
-		'</td><td>' + newMember.phone +
-		'</td></tr>';
+		'</td><td>' + newMember.phone + '</td></tr>';
 	document.getElementById('list').innerHTML += tr;
 
 }
+

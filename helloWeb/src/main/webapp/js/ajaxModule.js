@@ -13,11 +13,7 @@ const table = {
 	makeBody(dataAry = [{ mid, pass, name, phone }]) {
 		let bodyTag = "<tbody id = 'list'>";
 		dataAry.forEach(item => {
-			bodyTag += "<tr>"
-			for (let prop in item) {
-				bodyTag += "<td>" + item[prop] + "</td>";
-			}
-			bodyTag += "</tr>";
+			bodyTag += this.makeTr(item);
 		})
 		bodyTag += "</tbody>";
 		return bodyTag;
@@ -28,14 +24,14 @@ const table = {
 		tableTag += "</table>";
 		return tableTag;
 	},
-	makeTr(member) {
-		let tr = "<tr><td>";
-		tr += member.mid +"</td><td>";
-		tr += member.pass +"</td><td>";
-		tr += member.name +"</td><td>";
-		tr += member.phone +"</td></tr>";
-		document.getElementById('list').innerHTML += tr;
-		return tr;
+	makeTr(member = {}) {
+		let trTag = "<tr onclick='showInfo(event,this)'>"; //이벤트=이벤트핸들러
+		for (let prop in member) {
+			trTag += "<td>" + member[prop] + "</td>"
+		}
+		trTag += "</tr>";
+		//document.getElementById('list').innerHTML += tr;
+		return trTag;
 	}
 }
 
