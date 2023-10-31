@@ -20,6 +20,24 @@
 	</ul>
 	<p>깃 추가 작업을 함.</p>
 	<p>b의 상태변경</p>
+
+	<script>
+		let body = document.querySelector('body');
+		console.log(body.children[5].children[2].innerHTML = "메론");
+		//console.log(body.parentElement.innerHTML = '');
+		//li의 다섯번째 포도
+		let li5 = document.createElement('li');
+		li5.innerHTML = '포도';
+		console.log(li5);
+		document.querySelector('ul').appendChild(li5);
+
+		let p4 = document.createElement('p');
+		p4.setAttribute('class', 'fourth');
+		p4.innerHTML = 'c의 상태변경';
+		document.querySelector('p:nth-of-type(2)').after(p4);
+		//3번째 <p>를 찾아와야 그 다음에 넣음
+
+	</script>
 </body>
 
 </html>

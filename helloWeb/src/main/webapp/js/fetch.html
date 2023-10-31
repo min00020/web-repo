@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type = "module" src = "fetch.js"></script>
+</head>
+
+<body>
+	<div id="show"></div>
+	<script>
+		//Promise객체 (fullfilled, pending, rejected)
+		//비동기방식을 동기방식으로 쓰고싶을 때 사용
+		const promise = new Promise(function (resolve) {
+			setTimeout(function () {
+				console.log("실행");
+				resolve('Success');
+			}, 500);
+		})
+
+		promise
+			.then((resolve) => {
+				consolee.log('then:', resolve);
+				return 'OK';
+			})//promise객체가 성공적으로 실행되면, resolve에 넘겨준 첫번째 매개값을 넘겨받음
+			.then((result) => {
+				console.log('2then', result);
+				return message;
+			})
+			.catch((err)=>{
+				console.log('error: ', err);
+			})
+			
+			
+
+	</script>
+</body>
+
+</html>
