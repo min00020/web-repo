@@ -1,5 +1,4 @@
 //dom2.js
-
 //#show>table>tbody>(tr>td:사과+td:1000원 )/ (tr>td:복숭아 td:1500)
 
 const fruits = [
@@ -27,15 +26,9 @@ fruits.forEach(fruit => {
 table.appendChild(tbody);
 document.getElementById('show').appendChild(table);
 
-
-//const table = document.createElement('table');
-//const tbody = documnet.createElement('tbody');
-//table.appendChild(tbody);
-
 //fruits.forEach(fruit=>{
 	//const tr = document.createElement('tr')
 	
-	//for prop
 	//const td1 = document.createElement('td');
 	//td1.innerHTML = fruit.name;
 	//tr.appendChild(td1);
@@ -44,5 +37,3 @@ document.getElementById('show').appendChild(table);
 	//td2.innerHTML = fruit.price;
 	//tr.appendChild(td2);
 //})
-
-//document.getElementById('show').appendChlid(table);

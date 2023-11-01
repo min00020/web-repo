@@ -94,14 +94,14 @@ public class MemberServiceImpl implements MemberService {
 			psmt.setString(2, vo.getName());
 			psmt.setString(3, vo.getPhone());
 			psmt.setString(4, vo.getMid());
-			
+
 			int r = psmt.executeUpdate();
-			if(r == 1) {
+			if (r == 1) {
 				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (rs != null)
 					rs.close();
