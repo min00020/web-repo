@@ -53,9 +53,16 @@ function genTable(rawData = [], page = 1) {//전체(rawData)로 출력
 	//페이지 정보 만들어주기
 	let totalCnt = rawData.length;
 	let lastPage = Math.ceil(totalCnt / 5);
-	let endPage = Math.ceil(page / 5) * 5;
-	let beginPage = endPage - 4;
-
+	let beginPage;
+	if (page > 3) {
+		beginPage = page - 2;
+	} else {
+		beginPage = 1;
+	}
+	let endPage = beginPage + 4;
+	//let endPage = Math.ceil(page / 5) * 5;
+	//let beginPage = endPage - 4;
+	
 	let prevPage = false; let nextPage = false;
 	if (beginPage > 1) {
 		prevPage = true;
@@ -78,7 +85,7 @@ function genTable(rawData = [], page = 1) {//전체(rawData)로 출력
 		})
 		document.querySelector('.pagination').append(aTag);
 	}
-	
+
 	//페이지 선택 만들기
 	for (let i = beginPage; i <= endPage; i++) {
 		let aTag = document.createElement('a');
@@ -92,7 +99,10 @@ function genTable(rawData = [], page = 1) {//전체(rawData)로 출력
 		})
 		document.querySelector('.pagination').append(aTag);
 	}
-	
+
+
+
+
 	//다음페이지
 	if (nextPage) {
 		let aTag = document.createElement('a');
@@ -104,7 +114,7 @@ function genTable(rawData = [], page = 1) {//전체(rawData)로 출력
 		document.querySelector('.pagination').append(aTag);
 	}
 
-	
+
 	let thead = table.makeHead(titles); //헤더정보
 	let mapData = rawData.reduce((acc, center, idx) => {
 		if (idx >= startNo && idx < endNo) {

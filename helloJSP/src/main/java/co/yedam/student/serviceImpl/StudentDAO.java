@@ -92,7 +92,7 @@ public class StudentDAO {
 		} finally {
 			close();
 		}
-		return 0; // 처리된 건수 없음>에러
+		return 0; // 처리된 건수 없음>에러 작동을 끝내기 위해서!
 	}
 	
 	public StudentVO select(String sid) {
@@ -117,7 +117,7 @@ public class StudentDAO {
 		} finally {
 			close();
 		}
-		return null; // 처리된 건수 없음>에러
+		return null;
 	}
 	
 	public List<StudentVO> list(StudentVO vo){
