@@ -57,7 +57,7 @@ public class StudentDAO {
 	}
 	
 	public int update(StudentVO vo) {
-		String sql = "UPDATE STUDENT SET STUDENT_NAME = ?, STUDENT_PASSWORD=?, STUDENT_DEPT=?, STUDENT_BIRTHDAY=? WHERE STUDENT_ID = ? ";
+		String sql = "UPDATE STUDENT SET STUDENT_NAME = ?, STUDENT_PASSWORD=?, STUDENT_DEPT=NVL(?,STUDENT_DEPT), STUDENT_BIRTHDAY=? WHERE STUDENT_ID = ? ";
 		conn = ds.getConnection();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -110,6 +110,7 @@ public class StudentDAO {
 				vo.setStudentPassword(rs.getString("student_password"));
 				vo.setStudentDept(rs.getString("student_dept"));
 				vo.setStudentBirthday(rs.getDate("student_birthday"));
+				return vo;
 			}
 			int r = psmt.executeUpdate();
 		} catch (SQLException e) {

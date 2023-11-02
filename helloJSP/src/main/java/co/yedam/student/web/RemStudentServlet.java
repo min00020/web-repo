@@ -18,6 +18,7 @@ public class RemStudentServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String sid = req.getParameter("sid");
 			StudentService svc = new StudentServiceImpl();
+			
 			if(svc.removeStudent(sid)) {
 				//{"retCode":"OK"}
 				resp.getWriter().print("{\"retCode\":\"OK\"}");
