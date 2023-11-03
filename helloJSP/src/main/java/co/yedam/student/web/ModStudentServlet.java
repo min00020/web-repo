@@ -26,8 +26,8 @@ public class ModStudentServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 수정>바뀐정보 전송
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/json;charset=UTF-8");
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/json;charset=utf-8");
 		
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
@@ -61,7 +61,7 @@ public class ModStudentServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String json = gson.toJson(map);
 		resp.getWriter().print(json);
-		System.out.println(json);
+		//System.out.println(json);
 		//resp.getWriter().print(gson.toJson(map));
 		
 	}
