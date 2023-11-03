@@ -26,7 +26,8 @@ public class AddStudentServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		//한글처리 (요청정보에 있는 한글 서버로 넘어갈 때 인코딩방식 알아서 지정해줌) // req=요청값
-		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/json;charset=utf-8");
 		
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
@@ -49,15 +50,12 @@ public class AddStudentServlet extends HttpServlet {
 
 		StudentService svc = new StudentServiceImpl();
 
-		// svc.addStudent(vo);
-
 		if (svc.addStudent(vo)) {
 			// {"retCode":"OK"}
 			resp.getWriter().print("{\"retCode\":\"OK\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\":\"NG\"}");
 		}
-
 	}
 
 }

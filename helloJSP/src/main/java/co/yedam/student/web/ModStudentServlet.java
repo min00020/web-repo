@@ -26,8 +26,8 @@ public class ModStudentServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 수정>바뀐정보 전송
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/json;charset=utf-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/json;charset=UTF-8");
 		
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
@@ -35,7 +35,6 @@ public class ModStudentServlet extends HttpServlet {
 		String birth = req.getParameter("birth");
 		System.out.println(birth);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		//System.out.println("테스트" + id + name + pass + birth);
 		
 		StudentVO vo = new StudentVO();
 		
