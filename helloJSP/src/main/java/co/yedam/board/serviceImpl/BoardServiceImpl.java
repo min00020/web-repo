@@ -41,8 +41,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.getUser(id, pw);
 	}
 	
-	public List<MemberVO> memberList(String mid, String pass){
-		return dao.memberList(mid, pass);
+	public List<MemberVO> memberList(){
+		List<MemberVO> list = dao.memberList();
+		return list;
 	}
 	
 

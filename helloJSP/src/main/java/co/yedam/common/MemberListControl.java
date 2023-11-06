@@ -14,12 +14,9 @@ public class MemberListControl implements Command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String mid = req.getParameter("mid");
-		String pass = req.getParameter("pass");
 		
-		System.out.print(mid+pass);
 		BoardService svc = new BoardServiceImpl();
-		List<MemberVO> list = svc.memberList("mid", "pass");
+		List<MemberVO> list = svc.memberList();
 		
 		req.setAttribute("memberList", list);
 		

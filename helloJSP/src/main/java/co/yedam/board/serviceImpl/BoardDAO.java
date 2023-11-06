@@ -191,14 +191,15 @@ public class BoardDAO { // DB에 처리
 		return null;
 	}
 	
-	public List<MemberVO> memberList(String mid, String pass) {
-		sql = "SELECT * FROM MEMBER WHERE MID=? AND PASS = ?";
+	public List<MemberVO> memberList() {
+		//sql = "SELECT * FROM MEMBER WHERE MID=? AND PASS = ?";
+		sql = "SELECT * FROM MEMBER ORDER BY MID";
 		conn = ds.getConnection();
-		List<MemberVO> list = new ArrayList<>();
+		List<MemberVO> members = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, mid);
-			psmt.setString(2, pass);
+			//psmt.setString(1, mid);
+			//psmt.setString(2, pass);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -208,14 +209,14 @@ public class BoardDAO { // DB에 처리
 				vo.setPhone(rs.getString("phone"));
 				vo.setPass(rs.getString("pass"));
 				vo.setResponsibility(rs.getString("responsibility"));
-				list.add(vo);
+				members.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return list;
+		return members;
 	}
 	
 	

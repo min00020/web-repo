@@ -12,5 +12,5 @@ public interface BoardService {
 		
 	//로그인처리
 		public MemberVO loginCheck(String id, String pw);
-		public List<MemberVO> memberList(String mid, String pass);
+		public List<MemberVO> memberList();
 }
