@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.board.service.BoardVO;
+import co.yedam.board.service.MemberVO;
 import co.yedam.common.DataSource;
 
 public class BoardDAO { // DB에 처리
@@ -143,18 +144,18 @@ public class BoardDAO { // DB에 처리
 		}
 		return 0;
 	}
-	
-	//조회수 증가
+
+	// 조회수 증가
 	public int updateCnt(int boardNo) {
 		sql = "UPDATE BOARD SET VIEW_CNT=VIEW_CNT+1 WHERE BOARD_NO=?";
 		conn = ds.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, boardNo);
-			
+
 			int r = psmt.executeUpdate();
 			return r;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -162,5 +163,61 @@ public class BoardDAO { // DB에 처리
 		}
 		return 0;
 	}
+
+	// 아이디, 비번 받아서 값있나없나 체크
+	public MemberVO getUser(String id, String pw) {
+		sql = "SELECT * FROM MEMBER WHERE MID = ? AND PASS=?";
+		conn = ds.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, pw);
+			rs =  psmt.executeQuery();
+			
+			if(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setMid(rs.getString("mid"));
+				vo.setName(rs.getString("name"));
+				vo.setPass(rs.getString("pass"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setResponsibility(rs.getString("responsibility"));
+				return vo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return null;
+	}
+	
+	public List<MemberVO> memberList(String mid, String pass) {
+		sql = "SELECT * FROM MEMBER WHERE MID=? AND PASS = ?";
+		conn = ds.getConnection();
+		List<MemberVO> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, mid);
+			psmt.setString(2, pass);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setMid(rs.getString("mid"));
+				vo.setName(rs.getString("name"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setPass(rs.getString("pass"));
+				vo.setResponsibility(rs.getString("responsibility"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	
+	
 	
 }

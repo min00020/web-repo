@@ -33,17 +33,28 @@ public class FrontController extends HttpServlet {
 		// map.put("/second.do", new SecondControl()); //(key, vaule)
 		map.put("/main.do", new MainControl());
 		
+		//로그인, 로그아웃
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
+		
+		//게시판 목록
 		map.put("/boardList.do", new BoardListControl()); //"boardList.do"가 실행되면 > BoardListControl()
 		map.put("/getBoard.do", new GetBoardControl());
+		
 		//등록화면
 		map.put("/boardForm.do", new BoardFormControl());
 		map.put("/addBoard.do", new AddBoardControl());
 		//수정화면
 		map.put("/modifyForm.do", new ModifyFormControl());
 		map.put("/modifyBoard.do", new ModifyBoardControl());
-		
+		//삭제화면
 		map.put("/removeForm.do", new RemoveFormControl());
 		map.put("/removeBoard.do", new RemoveBoardControl());
+		
+		//관리자 멤버 조회
+		map.put("/memberList.do", new MemberListControl());
+		
 	}
 
 	@Override //호출할 때마다 실행하는건 서비스, init은 처음에만 실행

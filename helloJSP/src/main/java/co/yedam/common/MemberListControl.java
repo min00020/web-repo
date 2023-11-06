@@ -1,0 +1,35 @@
+package co.yedam.common;
+
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.yedam.board.service.BoardService;
+import co.yedam.board.service.MemberVO;
+import co.yedam.board.serviceImpl.BoardServiceImpl;
+
+public class MemberListControl implements Command {
+
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		String mid = req.getParameter("mid");
+		String pass = req.getParameter("pass");
+		
+		System.out.print(mid+pass);
+		BoardService svc = new BoardServiceImpl();
+		List<MemberVO> list = svc.memberList("mid", "pass");
+		
+		req.setAttribute("memberList", list);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/main/memberList.jsp"); //외부에서 직접 접근 못하게 웹INF로 jsp 옮기기
+		try {
+			rd.forward(req, resp); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

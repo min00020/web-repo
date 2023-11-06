@@ -3,19 +3,22 @@
 
 <%@include file="../layout/menu.jsp" %>
 <%@include file="../layout/header.jsp" %>
+
 	<h3>게시글 등록화면</h3>
 	<form action="addBoard.do" method="post" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" class="form-control" name="title"></td>
+				<td><input type="text" class="form-control" name="title" ></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" class="form-control" name="writer"></td>
+				<td><input type="text" readonly class="form-control" name="writer" value="<%=logId%>"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea cols="30" rows="5" class="form-control" name="content"></textarea></td>
+				<td colspan="2">
+					<textarea class="form-control" cols="30" rows="5" name="content"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<th>파일명</th>
