@@ -110,13 +110,14 @@ public class BoardDAO { // DB에 처리
 	}
 
 	public int insert(BoardVO vo) {
-		sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER) VALUES(seq_board.nextval, ?, ?, ?)";
+		sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER, IMAGE) VALUES(SEQ_BOARD.NEXTVAL, ?, ?, ?,?)";
 		conn = ds.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getTitle());
 			psmt.setString(2, vo.getContent());
 			psmt.setString(3, vo.getWriter());
+			psmt.setString(4, vo.getImage());
 			int r = psmt.executeUpdate();
 			return r;
 		} catch (SQLException e) {

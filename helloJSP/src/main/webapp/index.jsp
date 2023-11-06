@@ -7,9 +7,9 @@
 <title>webapp/index.jsp</title>
 </head>
 <body>
-	<!-- boardList가 첫번째 페이지로 열리도록 -->
+	<!-- 아래 파일이 첫번째 페이지로 열리도록 -->
 	<%
-	response.sendRedirect("boardList.do");
+	response.sendRedirect("main.do");
 	%>
 
 	<%

@@ -15,6 +15,10 @@ import co.yedam.board.web.AddBoardControl;
 import co.yedam.board.web.BoardFormControl;
 import co.yedam.board.web.BoardListControl;
 import co.yedam.board.web.GetBoardControl;
+import co.yedam.board.web.ModifyBoardControl;
+import co.yedam.board.web.ModifyFormControl;
+import co.yedam.board.web.RemoveBoardControl;
+import co.yedam.board.web.RemoveFormControl;
 
 //url:*.do 실행되도록 
 public class FrontController extends HttpServlet {
@@ -24,20 +28,27 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-	
 		// url값이랑 실행할 servlet
-		// map.put("/FirstServlet.do", new FirstControl()); //인터페이스(Command) 구현하는 구현클래스를
-		// 커맨드란 값에 넣겠다
+		// map.put("/FirstServlet.do", new FirstControl()); //인터페이스(Command) 구현하는 구현클래스를 커맨드란 값에 넣음
 		// map.put("/second.do", new SecondControl()); //(key, vaule)
-
+		map.put("/main.do", new MainControl());
+		
 		map.put("/boardList.do", new BoardListControl()); //"boardList.do"가 실행되면 > BoardListControl()
 		map.put("/getBoard.do", new GetBoardControl());
+		//등록화면
 		map.put("/boardForm.do", new BoardFormControl());
 		map.put("/addBoard.do", new AddBoardControl());
+		//수정화면
+		map.put("/modifyForm.do", new ModifyFormControl());
+		map.put("/modifyBoard.do", new ModifyBoardControl());
+		
+		map.put("/removeForm.do", new RemoveFormControl());
+		map.put("/removeBoard.do", new RemoveBoardControl());
 	}
 
 	@Override //호출할 때마다 실행하는건 서비스, init은 처음에만 실행
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		System.out.println("FrontController");
 		String uri = req.getRequestURI(); // http://localhost:8080/helloJSP/??.do 어떤 페이지 요청했는지 보여줌
 		String context = req.getServletContext().getContextPath(); // helloJSP / ContextPath:실제경로, getContextPath() = 프로젝트 이름
