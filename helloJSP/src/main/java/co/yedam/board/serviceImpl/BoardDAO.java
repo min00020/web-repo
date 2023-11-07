@@ -193,7 +193,7 @@ public class BoardDAO { // DB에 처리
 	
 	public List<MemberVO> memberList() {
 		//sql = "SELECT * FROM MEMBER WHERE MID=? AND PASS = ?";
-		sql = "SELECT * FROM MEMBER ORDER BY MID";
+		sql = "SELECT * FROM MEMBER ORDER BY 1";
 		conn = ds.getConnection();
 		List<MemberVO> members = new ArrayList<>();
 		try {

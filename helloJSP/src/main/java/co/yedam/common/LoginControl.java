@@ -31,6 +31,7 @@ public class LoginControl implements Command {
 			session.setAttribute("logId", id);
 			session.setAttribute("responsibility", vo.getResponsibility());
 			
+			
 			try {
 				resp.sendRedirect("boardList.do");
 			} catch (IOException e) {

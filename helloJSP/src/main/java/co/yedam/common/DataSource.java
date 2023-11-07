@@ -7,7 +7,7 @@ public class DataSource {
 	private DataSource() {}
 	
 	private static String driver = "oracle.jdbc.OracleDriver";
-	private static String url = "jdbc:oracle:thin:@192.168.0.38:1521:xe"; //오라클 인사관리>속성>하단에 주소 있음
+	private static String url = "jdbc:oracle:thin:@localhost:1521:xe"; //오라클 인사관리>속성>하단에 주소 있음
 	private static String user = "hr";
 	private static String password = "1234";
 	
