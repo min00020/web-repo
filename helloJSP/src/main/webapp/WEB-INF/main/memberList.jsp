@@ -18,7 +18,7 @@
 	</thead>
 	<tbody>
 		<%
-		List<MemberVO> list = (List<MemberVO>) request.getAttribute("list");
+		List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
 		for (MemberVO vo : list) {
 		%>
 		<tr>
