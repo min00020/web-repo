@@ -63,6 +63,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addReply.do", new AddReplyControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
 		
+		map.put("/chartForm.do", new ChartFormControl());
+		map.put("/drawChart.do", new DrawChartControl());
+		
 	}
 
 	@Override //호출할 때마다 실행하는건 서비스, init은 처음에만 실행
