@@ -20,16 +20,16 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="list-group list-group-flush">
 	                <c:choose>
 		                <c:when test="${empty logId }">
-		                <div class="sidebar-heading border-bottom bg-light">(Guest)입니다</div>
+		                	<div class="sidebar-heading border-bottom bg-light">(Guest)입니다</div>
 		                </c:when>
-	                <c:otherwise>
-	           			<div class="sidebar-heading border-bottom bg-light">(${logId })환영합니다${responsibility }</div>
-	                </c:otherwise>
+		                <c:otherwise>
+		           			<div class="sidebar-heading border-bottom bg-light">(${logId })환영합니다${responsibility }</div>
+		                </c:otherwise>
 	                </c:choose>
 	                
+                <div class="list-group list-group-flush">
 	             	<a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글목록</a>
 	                <c:choose>
 	             	  	<c:when test="${empty logId }">

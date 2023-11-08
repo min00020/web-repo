@@ -8,9 +8,6 @@
 <%@include file="../layout/menu.jsp"%>
 <%@include file="../layout/header.jsp"%>
 
-<c:forEach var="i" begin="1" end="10" step="2">
-	<p>${i }</p>
-</c:forEach>
 
 <table class="table">
 	<thead>
