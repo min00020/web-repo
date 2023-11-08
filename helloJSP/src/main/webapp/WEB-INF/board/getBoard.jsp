@@ -126,6 +126,27 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 	})
 		
 		function makeRow(reply){
+			
+			function deleteCallback(e){ //콜백함수엔 매개값으로 이벤트 넘어감
+				console.log(e.target.parentElement);
+				if(writer != reply.replyer){
+					alert('권한이 없습니다!');
+					return;
+				}
+				//삭제
+				fetch('removeReply.do?rno='+reply.replyNo)
+				.then(resolve => resolve.json())
+				.then(result => {
+					if(result.retCode=='OK'){
+						alert('Success!')
+						e.target.parentElement.remove();
+					}else{
+						alert('Error!')
+					}
+				})
+				.catch(err=>console.log(err))
+			}
+			
 			let temp = document.querySelector('#template').cloneNode(true);
 			temp.style.display = 'block';
 			console.log(temp);
@@ -133,6 +154,8 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 			temp.querySelector('b').innerHTML = reply.reply;
 			temp.querySelector('span:nth-of-type(2)').innerHTML = ' ' + reply.replyer;
 			temp.querySelector('span:nth-of-type(3)').innerHTML = ' ' + reply.replyDate;
+			temp.querySelector('button').addEventListener('click',deleteCallback);
+			
 			return temp;
 		}
 		
