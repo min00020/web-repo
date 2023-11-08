@@ -220,6 +220,8 @@
 					if(result.retCode=='OK'){
 						alert('Success!')
 						e.target.parentElement.remove();
+						showList(-1);
+						
 					}else{
 						alert('Error!')
 					}
