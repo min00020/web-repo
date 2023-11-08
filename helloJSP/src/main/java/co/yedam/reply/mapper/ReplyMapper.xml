@@ -3,7 +3,15 @@
 <mapper namespace="co.yedam.reply.mapper.ReplyMapper">
 	<select id="replyList"
 		resultType="co.yedam.reply.service.ReplyVO">
-		select*from reply where board_no = #{boardNo}
+		<![CDATA[
+			select *
+			from (
+				select /*+ INDEX(r reply_pk) */ rownum rn, r.*
+				from reply r
+				where r.board_no = #{boardNo}) a
+			where a.rn > (#{page}-1) * 5
+			and a.rn <= (#{page}) * 5
+		]]> 
 	</select>
 
 	<select id="selectReply"
@@ -13,10 +21,11 @@
 
 	<insert id="insertReply"
 		parameterType="co.yedam.reply.service.ReplyVO">
-		<selectKey keyColumn="reply_no" keyProperty="replyNo" resultType="int" order="BEFORE">
+		<selectKey keyColumn="reply_no" keyProperty="replyNo"
+			resultType="int" order="BEFORE">
 			select seq_reply.nextval from dual
 		</selectKey>
-		
+
 		insert into reply (reply_no, board_no, reply, replyer, reply_date)
 		values(#{replyNo}, #{boardNo}, #{reply}, #{replyer}, #{replyDate})
 	</insert>

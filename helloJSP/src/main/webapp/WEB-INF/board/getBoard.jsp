@@ -6,7 +6,28 @@
 #list span {
 	margin: 4px;
 }
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
 </style>
+
 <%@include file="../layout/menu.jsp"%>
 <%@include file="../layout/header.jsp"%>
 <%
@@ -74,11 +95,13 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 
 <h3>댓글목록</h3>
 <ul id="list">
-	<il style="display:none;" id="template"> <span>00</span> <b>첫번째글</b>
+	<li style="display:none;" id="template"> <span>00</span> <b>첫번째글</b>
 	<span>user01</span> <span>2013-10-10</span>
 	<button>삭제</button>
-	</il>
+	</li>
 </ul>
+<div class="pagination"></div>
+
 <script>
 		document.querySelector('input[type=button]').addEventListener('click',function(e){
 			document.forms.myFrm.action = 'removeForm.do'; //'removeForm.do'안하면 modify로 가니까
@@ -89,17 +112,73 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		let bno = "<%=vo.getBoardNo()%>"; 
 		let writer = "<%=logId%>"
 		bno = document.querySelector('.boardNo').innerHTML;
-		fetch('replyList.do?bno='+ bno)
-		.then(resolve => resolve.json())
-		.then(result => {
-			console.log(result);
-			result.forEach(reply => {
-				let li = makeRow(reply);
-				//ul>li 생성.
-				document.querySelector('#list').append(li);
+		let page = 1;
+		
+		function showList(pg = 1){ //초기값 선언
+			document.querySelectorAll('#list li:not(:nth-of-type(1))').forEach(li=>li.remove());
+		
+			console.log(document.querySelectorAll('#list li:not(:nth-of-type(1))'));
+		
+			fetch('replyList.do?bno='+ bno + '&page=' + pg)
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result);
+				if(pg < 0){
+					page= Math.ceil(result.dto.total/5);
+					showList(page);
+					return;
+				}
+				
+				result.list.forEach(reply => {
+					let li = makeRow(reply);
+					//ul>li 생성.
+					document.querySelector('#list').append(li);
+				})
+				//page생성
+				console.log('조회:', result.dto);
+				makePaging(result.dto);
 			})
-		})
-		.catch(err=>console.log(err))
+			.catch(err=>console.log(err));
+		}//showList
+		showList();
+		
+		//페이지 링크 생성
+		function makePaging(dto={}){
+			
+			document.querySelector('.pagination').innerHTML='';
+			if(dto.prev){
+				let aTag = document.createElement('a');
+				aTag.setAttribute('href',dto.startPage-1);
+				aTag.innerHTML="&laquo;";
+				document.querySelector('.pagination').append(aTag);
+			}
+			for(let i=dto.startPage; i <= dto.endPage; i++){
+				let aTag = document.createElement('a');
+				aTag.setAttribute('href',i);
+				aTag.innerHTML=i;
+				if(i == page){
+					aTag.className = 'active';
+				}
+				document.querySelector('.pagination').append(aTag);
+			}
+			if(dto.next){
+				let aTag = document.createElement('a');
+				aTag.setAttribute('href',dto.endPage+1);
+				aTag.innerHTML="&raquo;";
+				document.querySelector('.pagination').append(aTag);
+			}
+			
+			//a에 클릭이벤트 (링크 누를 때)
+			document.querySelectorAll('.pagination a').forEach(ele => {
+				ele.addEventListener('click', function(e){
+					e.preventDefault(); // form, a => 링크기능 차단
+					page = ele.getAttribute('href');
+					showList(page);
+				})
+			} )
+		}
+		
+
 		
 		//댓글 등록버튼 이벤트
 		document.querySelector('#addReply').addEventListener('click', function (e){
@@ -119,6 +198,7 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		.then(result => {
 			if(result.retCode == "OK"){
 				document.querySelector('#list').append(makeRow(result.vo));
+				showList(-1);
 			}else{
 				alert('Error.');
 			}

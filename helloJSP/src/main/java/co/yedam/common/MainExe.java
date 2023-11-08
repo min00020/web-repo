@@ -13,8 +13,11 @@ public class MainExe {
 		SqlSession session = DataSourceMybatis.getInstance().openSession(true);//true자동커밋
 		ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 		
-		List<ReplyVO> list = mapper.replyList(1);
-		list.forEach(vo -> System.out.println(vo));
+		
+		mapper.replyList(1, 3).forEach(rep->System.out.println(rep));
+		
+//		List<ReplyVO> list = mapper.replyList(1,1);
+//		list.forEach(vo -> System.out.println(vo));
 		
 //		ReplyVO vo = new ReplyVO();
 //		vo.setBoardNo(1);
@@ -22,13 +25,9 @@ public class MainExe {
 //		vo.setReplyer("메인");
 		
 		//mapper.insertReply(vo);
-		
-		mapper.deleteReply(8);
-		
-		
+		//mapper.deleteReply(8);
 		
 //-------------------------------------------------------------
-		
 		// 학생 아이디, 비밀번호, 이름, 학과, 생일
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //		StudentVO vo = new StudentVO();
@@ -53,7 +52,6 @@ public class MainExe {
 //		vo.setWriter("user03");
 //		vo.setContent("content_modify");
 //		vo.setBoardNo(5);
-//
 //
 //		BoardService svc = new BoardServiceImpl();
 //		if (dao.update(vo) == 1) {

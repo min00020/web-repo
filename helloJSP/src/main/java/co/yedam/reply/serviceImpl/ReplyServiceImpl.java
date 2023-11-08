@@ -15,41 +15,32 @@ public class ReplyServiceImpl implements ReplyService {
 	ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class); // 인터페이스 ,
 
 	@Override
-	public List<ReplyVO> replyList(int boardNo) {
-		// TODO Auto-generated method stub
-		return mapper.replyList(boardNo);
+	public List<ReplyVO> replyList(int boardNo, int page) {
+		return mapper.replyList(boardNo,page);
 	}
 
 
 	@Override
 	public ReplyVO getReply(int replyNo) {
-		// TODO Auto-generated method stub
 		return mapper.selectReply(replyNo);
 	}
 
 
 	@Override
 	public boolean addReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
 		return mapper.insertReply(vo) == 1;
 	}
 
 
 	@Override
 	public boolean editReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
 		return mapper.updateReply(vo) == 1;
 	}
 
 
 	@Override
 	public boolean removeReply(int replyNo) {
-		// TODO Auto-generated method stub
 		return mapper.deleteReply(replyNo)==1;
 	}
 
-
-	
-
-	
 }
