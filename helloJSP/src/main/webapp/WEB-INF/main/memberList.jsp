@@ -2,11 +2,15 @@
 <%@page import="co.yedam.board.service.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@include file="../layout/menu.jsp"%>
 <%@include file="../layout/header.jsp"%>
 
-<h3>회원 목록</h3>
-
+<c:forEach var="i" begin="1" end="10" step="2">
+	<p>${i }</p>
+</c:forEach>
 
 <table class="table">
 	<thead>
@@ -17,20 +21,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%
-		List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
-		for (MemberVO vo : list) {
-		%>
-		<tr>
-			<td><%=vo.getMid()%></td>
-			<td><%=vo.getName()%></td>
-			<td><%=vo.getPhone()%></td>
-		</tr>
-		<%
-		}
-		%>
+		<c:forEach items="${memberList }" var="member">
+			<tr>
+				<td>${member.mid }</td>
+				<td>${member.name }</td>
+				<td>${member.phone }</td>
+			</tr>
+		</c:forEach>
 	</tbody>
-
 </table>
 
 <%@include file="../layout/footer.jsp"%>

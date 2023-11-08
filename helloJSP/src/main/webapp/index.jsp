@@ -4,33 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>webapp/index.jsp</title>
+<title>첫페이지입니다./index.jsp</title>
 </head>
 <body>
-	<!-- 아래 파일이 첫번째 페이지로 열리도록 -->
-	<%
-	response.sendRedirect("main.do");
-	%>
 
 	<%
+	//response.sendRedirect("main.do")
+	%>
 	
-	%>
-
-	<%-- <a href="student/studentInfo.html">학생정보</a>
-	<%
-	String name = "홍길동";
-	int age = 20;
-	for (int i = 0; i < 5; i++) {
-	%>
-	<p><%=i%>번째 이름은
-		<%=name%>이고, 나이는
-		<%=age%>
-		입니다
-	</p>
-	<%
-	}
-	%>
-	<a href="FirstServlet.do">서블릿 링크</a> --%>
+	<jsp:forward page = "main.do"></jsp:forward>
 
 </body>
 </html>
