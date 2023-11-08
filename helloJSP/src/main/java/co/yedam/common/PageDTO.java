@@ -10,12 +10,12 @@ public class PageDTO {
 	
 //51page 51page ~52page / 전체 258건이라면> 52페이지
 	public PageDTO(int boardNo, int total, int currentPage) {
-		this.currentPage = currentPage;
 		
-		int realEnd = (int) Math.ceil(total / 5);
+		int realEnd = (int) Math.ceil(total / 5.0);
 
 		this.boardNo = boardNo;
 		this.total = total;
+		this.currentPage = currentPage;
 
 		this.endPage =(int) Math.ceil(currentPage/10.0) * 10;
 		this.startPage = this.endPage - 9;

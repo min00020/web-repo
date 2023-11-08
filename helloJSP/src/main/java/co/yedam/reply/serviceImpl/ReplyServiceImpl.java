@@ -11,7 +11,6 @@ import co.yedam.reply.service.ReplyVO;
 
 public class ReplyServiceImpl implements ReplyService {
 	SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true); // true=자동커밋
-	
 	ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class); // 인터페이스 ,
 
 	@Override
@@ -41,6 +40,12 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public boolean removeReply(int replyNo) {
 		return mapper.deleteReply(replyNo)==1;
+	}
+
+
+	@Override
+	public int getTotalCnt(int boardNo) {
+		return mapper.getTotalCnt(boardNo);
 	}
 
 }

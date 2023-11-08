@@ -15,4 +15,6 @@ public interface ReplyMapper {
 	public int updateReply(ReplyVO vo); //수정
 	public int deleteReply(int replyNo); //삭제
 	
+	public int getTotalCnt(int boardNo);
+	
 }

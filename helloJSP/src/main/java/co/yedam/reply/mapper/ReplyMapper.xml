@@ -40,4 +40,9 @@
 		delete from reply where
 		reply_no = #{replyNo}
 	</delete>
+	
+	<select id="getTotalCnt" resultType="int">
+		select count(*) from reply where board_no = #{boardNo}
+	</select>
+	
 </mapper>

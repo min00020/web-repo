@@ -154,6 +154,7 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 			}
 			for(let i=dto.startPage; i <= dto.endPage; i++){
 				let aTag = document.createElement('a');
+				//console.log('dto:', dto);
 				aTag.setAttribute('href',i);
 				aTag.innerHTML=i;
 				if(i == page){
@@ -197,7 +198,7 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		.then(resolve=>resolve.json())
 		.then(result => {
 			if(result.retCode == "OK"){
-				document.querySelector('#list').append(makeRow(result.vo));
+				//document.querySelector('#list').append(makeRow(result.vo));
 				showList(-1);
 			}else{
 				alert('Error.');

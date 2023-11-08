@@ -26,11 +26,10 @@ public class ReplyListControl implements Command {
 		page = page == null ? "1" : page;
 		
 		//페이징 계산하기
-		System.out.println(bno);
-		PageDTO dto = new PageDTO(Integer.parseInt(bno), 96, Integer.parseInt(page));
-		
-
 		ReplyService svc = new ReplyServiceImpl();
+		PageDTO dto = new PageDTO(Integer.parseInt(bno), svc.getTotalCnt(Integer.parseInt(bno)), Integer.parseInt(page));
+		
+		
 		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno),Integer.parseInt(page));
 
 		//list, dto

@@ -9,5 +9,7 @@ public interface ReplyService {
 		public boolean addReply(ReplyVO vo);
 		public boolean editReply(ReplyVO vo);
 		public boolean removeReply(int replyNo);
-//		
+		
+	//댓글 건수
+		public int getTotalCnt(int boardNo);
 }
