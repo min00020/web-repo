@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.admin.web.MemberListControl;
 import co.yedam.board.web.BoardListControl;
+import co.yedam.board.web.GetBoardControl;
 
 
 //url:*.do 실행되도록 
@@ -26,6 +27,8 @@ public class FrontController extends HttpServlet {
 	
 		map.put("/boardList.do", new BoardListControl()); //"boardList.do"가 실행되면 > BoardListControl()
 		map.put("/memberList.do", new MemberListControl() );
+		map.put("/getBoard.do", new GetBoardControl());
+		
 	
 	}
 
