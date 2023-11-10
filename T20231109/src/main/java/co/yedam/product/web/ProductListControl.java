@@ -26,7 +26,7 @@ public class ProductListControl implements Command {
 		req.setAttribute("list", list);
 		System.out.println("ProductListControl: "+ list);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/product/productList.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher(path);
 		
 		try {
 			req.getRequestDispatcher(path).forward(req, resp);
