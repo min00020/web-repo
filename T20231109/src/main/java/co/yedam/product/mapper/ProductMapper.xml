@@ -4,11 +4,14 @@
 
 <mapper namespace="co.yedam.product.mapper.ProductMapper">
 	<select id="selectList" resultType="co.yedam.product.service.ProductVO">
-	 	select * from tbl_product order by prod_code
+	 	SELECT * FROM TBL_PRODUCT ORDER BY PROD_CODE
 	</select>
 	
-	<select id="select" resultType="co.yedam.product.service.ProductVO" parameterType="string">
-		select * from tbl_product where prod_code=#{prodCode}
+	<select id="select" resultType="co.yedam.product.service.ProductVO">
+		SELECT * FROM TBL_PRODUCT WHERE PROD_CODE=#{prodCode}
 	</select>
-
+	
+	<select id="selectRelList" resultType="co.yedam.product.service.ProductVO">
+		SELECT * FROM TBL_PRODUCT ORDER BY LIKE_IT DESC
+	</select>
 </mapper>

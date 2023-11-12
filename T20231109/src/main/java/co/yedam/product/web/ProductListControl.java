@@ -23,10 +23,10 @@ public class ProductListControl implements Command {
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productList();
 		
-		req.setAttribute("list", list);
 		System.out.println("ProductListControl: "+ list);
+
+		req.setAttribute("list", list);
 		
-		RequestDispatcher rd = req.getRequestDispatcher(path);
 		
 		try {
 			req.getRequestDispatcher(path).forward(req, resp);

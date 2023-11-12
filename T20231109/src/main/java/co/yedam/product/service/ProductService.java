@@ -5,5 +5,7 @@ import java.util.List;
 public interface ProductService {
 	public List<ProductVO> productList();
 	public ProductVO getProduct(String pno);
+	
+	public List<ProductVO> selectRelList();
 
 }

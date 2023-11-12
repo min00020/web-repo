@@ -24,6 +24,11 @@ SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true); //tru
 		return mapper.select(prodCode);
 	}
 
+	@Override
+	public List<ProductVO> selectRelList() {
+		return mapper.selectRelList();
+	}
+
 
      
 	
